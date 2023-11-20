@@ -18,7 +18,7 @@ export const githubApi = createApi({
       transformResponse: (res: GithubResponse) => res.items,
     }),
     getUserRepos: builder.query<IRepo[], string>({
-      query: (username: string) => `users/${username}/repos`,
+      query: username => `users/${username}/repos`,
     }),
   }),
 });

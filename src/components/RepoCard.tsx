@@ -2,30 +2,30 @@ import { type MouseEvent, useState } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import {
-  addFavorite,
-  removeFavorite,
-  selectFavorites,
+  addFavourite,
+  removeFavourite,
+  selectFavourites,
 } from '../store/github/githubSlice';
 
 import type { IRepo } from '../models/repo';
 
 function RepoCard({ repo }: { repo: IRepo }) {
-  const favorites = useAppSelector(selectFavorites);
+  const favourites = useAppSelector(selectFavourites);
   const dispatch = useAppDispatch();
 
   const [isFavorite, setIsFavorite] = useState(
-    favorites.includes(repo.html_url)
+    favourites.includes(repo.html_url)
   );
 
   const addToFavourite = (event: MouseEvent) => {
     event.preventDefault();
-    dispatch(addFavorite(repo.html_url));
+    dispatch(addFavourite(repo.html_url));
     setIsFavorite(true);
   };
 
   const removeFromFavourite = (event: MouseEvent) => {
     event.preventDefault();
-    dispatch(removeFavorite(repo.html_url));
+    dispatch(removeFavourite(repo.html_url));
     setIsFavorite(false);
   };
 
