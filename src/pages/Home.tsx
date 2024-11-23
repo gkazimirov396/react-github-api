@@ -27,8 +27,9 @@ function Home() {
   const [fetchRepos, { data: repos, isLoading: isFetchingRepos }] =
     useLazyGetUserReposQuery();
 
-  const clickHandler = (username: string) => {
+  const showUserRepos = (username: string) => {
     fetchRepos(username);
+
     setSearchValue(username);
     setIsDropdownShown(false);
   };
@@ -55,9 +56,14 @@ function Home() {
             {users?.map(user => (
               <li
                 key={user.id}
-                onClick={() => clickHandler(user.login)}
-                className="px-4 py-2 transition-colors cursor-pointer hover:bg-gray-500 hover:text-white"
+                onClick={() => showUserRepos(user.login)}
+                className="px-4 py-2 flex items-center gap-3 transition-colors cursor-pointer hover:bg-gray-500 hover:text-white"
               >
+                <div className="avatar">
+                  <div className="w-12 rounded-full">
+                    <img src={user.avatar_url} alt="Profile Pic" />
+                  </div>
+                </div>
                 {user.login}
               </li>
             ))}
