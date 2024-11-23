@@ -19,12 +19,14 @@ function RepoCard({ repo }: { repo: IRepo }) {
 
   const addToFavourite = (event: MouseEvent) => {
     event.preventDefault();
+
     dispatch(addFavourite(repo.html_url));
     setIsFavorite(true);
   };
 
   const removeFromFavourite = (event: MouseEvent) => {
     event.preventDefault();
+
     dispatch(removeFavourite(repo.html_url));
     setIsFavorite(false);
   };

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function Navigation() {
   return (
@@ -6,10 +6,20 @@ function Navigation() {
       <h3 className="font-bold">Github Search</h3>
 
       <span>
-        <Link to="/" className="mr-4">
+        <NavLink
+          to="/"
+          className="mr-4"
+          style={({ isActive }) => ({ opacity: isActive ? 0.6 : 1 })}
+        >
           Home
-        </Link>
-        <Link to="/favorites">Favorites</Link>
+        </NavLink>
+
+        <NavLink
+          to="/favorites"
+          style={({ isActive }) => ({ opacity: isActive ? 0.6 : 1 })}
+        >
+          Favorites
+        </NavLink>
       </span>
     </nav>
   );
